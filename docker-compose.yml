@@ -1,0 +1,21 @@
+version: "3"
+services:
+  blog:
+    image: foxsnow/timarhaneblog:latest
+    container_name: frontend
+    build: 
+      context: ./
+    ports:
+      - "3001:3001"
+    environment:
+      - DOCKER_BUILDKIT=0
+      - COMPOSE_DOCKER_CLI_BUILD=0
+    working_dir: /app
+    networks:
+      - nextjs
+
+networks:
+  nextjs:
+    driver: bridge
+    external: true
+      

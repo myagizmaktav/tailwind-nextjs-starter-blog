@@ -93,14 +93,78 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                 </ul>
               </dd>
             </dl>
-            <div className="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0 dark:divide-gray-700">
+            <div className="xl:col-span-3 xl:row-span-2 xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700">
+              <div className="pt-3 pb-5">
+                <div className="flex w-full items-center justify-center">
+                  <Link
+                    href={'https://discord.gg/timarhane'}
+                    className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 w-full"
+                  >
+                    <div className="flex w-full flex-col items-center justify-center">
+                      <h3 className="bold text-center">
+                        Türkiyenin En Popüler Kalabalık Tımarhane Sunucusuna Katıl
+                      </h3>
+                    </div>
+
+                    <div className="mt-2 flex w-full flex-col items-center justify-center">
+                      <div className="flex h-45 w-full flex-col bg-red-500 lg:w-96">
+                        <div className="relative flex-4 bg-pink-50">
+                          <Image
+                            src="/static/images/timarhane_background.jpg"
+                            alt="discord"
+                            fill
+                            style={{ objectFit: 'cover' }}
+                          />
+                        </div>
+
+                        <div className="flex w-full flex-6 flex-col bg-[#2B2D31]">
+                          <div className="flex flex-2">
+                            <div className="mt-2 ml-3 flex w-full flex-row">
+                              <p className="bold text-[10px] text-gray-400">
+                                SUNUCUYA KATILMASI İÇİN BİR DAVET GÖNDERDİN
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className="flex flex-7 flex-row items-center justify-center p-2 lg:p-0">
+                            <div className="flex flex-8 items-start justify-center">
+                              <div className="relative h-12 w-12 overflow-hidden rounded-lg">
+                                <Image
+                                  src="/static/images/timarhane.jpg"
+                                  alt="discord"
+                                  fill
+                                  style={{ objectFit: 'cover' }}
+                                />
+                              </div>
+
+                              <div className="ml-2 flex flex-col">
+                                <p className="text-xs text-white">Tımarhane</p>
+                                <p className="text-xs text-gray-400">
+                                  Türkiyenin En Popüler Sunucusu
+                                </p>
+                              </div>
+                            </div>
+
+                            <div className="flex flex-3">
+                              <div className="ml-2 flex h-10 w-12 items-center justify-center rounded-md bg-green-700 lg:w-18">
+                                <p className="mb-1 text-center text-xs text-white">Katıl</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+
               <div className="prose dark:prose-invert max-w-none pt-10 pb-8">{children}</div>
               <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
-                <Link href={discussUrl(path)} rel="nofollow">
+                {/* <Link href={discussUrl(path)} rel="nofollow">
                   Discuss on Twitter
                 </Link>
                 {` • `}
-                <Link href={editUrl(filePath)}>View on GitHub</Link>
+                <Link href={editUrl(filePath)}>View on GitHub</Link> */}
               </div>
               {siteMetadata.comments && (
                 <div

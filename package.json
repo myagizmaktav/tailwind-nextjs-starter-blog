@@ -9,7 +9,12 @@
     "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
     "lint": "next lint --fix --dir pages --dir app --dir components --dir lib --dir layouts --dir scripts",
-    "prepare": "husky"
+    "prepare": "husky",
+    "docker-build-and-push": "npm run docker-build-and-push-latest && npm run docker-build-and-push-timestamp",
+    "docker-build-and-push-latest": "docker build -t foxsnow/timarhaneblog:latest ./ && sleep 5 &&  docker push foxsnow/timarhaneblog:latest",
+    "docker-build-and-push-timestamp": "timestamp=$(date +'%Y%m%d%H%M%S') && docker build -t docker.io/foxsnow/timarhaneblog:t$timestamp ./ &&  docker push docker.io/foxsnow/timarhaneblog:t$timestamp",
+    "docker-build-and-push-test": "docker build -t foxsnow/timarhaneblog:test --no-cache --progress=plain  ./ &&  docker push foxsnow/timarhaneblog:test"
+
   },
   "dependencies": {
     "@headlessui/react": "2.2.0",
