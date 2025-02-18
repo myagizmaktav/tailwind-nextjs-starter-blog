@@ -160,6 +160,54 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
 
               <div className="prose dark:prose-invert max-w-none pt-10 pb-8">{children}</div>
               <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
+                <div className="flex flex-col">
+                  <div>
+                    <h3 className="bold text-lg text-gray-900 dark:text-gray-100">
+                      Diğer Bloglarımıza şu adreslerden ulaşabilirsiniz:
+                    </h3>
+                  </div>
+
+                  <div className="mt-3">
+                    <ul>
+                      <li>
+                        <Link href="https://enkalabalikdiscord.com/blog">
+                          <p className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
+                            En Kalabalık Discord Blog
+                          </p>
+                        </Link>
+                      </li>
+                      <li className="mt-2">
+                        <Link href="https://enkalabalikdiscord.com.tr/blog">
+                          <p className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
+                            En Kalabalık Discord Blog 2
+                          </p>
+                        </Link>
+                      </li>
+                      <li className="mt-2">
+                        <Link href="https://kalabalikdiscord.com.tr/blog">
+                          <p className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
+                            Kalabalık Discord Blog
+                          </p>
+                        </Link>
+                      </li>
+                      <li className="mt-2">
+                        <Link href="https://kalabalikdiscord.com/blog">
+                          <p className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
+                            Kalabalık Discord Blog 2
+                          </p>
+                        </Link>
+                      </li>
+                      <li className="mt-2">
+                        <Link href="https://turkiyediscord.xyz/blog">
+                          <p className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
+                            Türkiye Discord Blog
+                          </p>
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
                 {/* <Link href={discussUrl(path)} rel="nofollow">
                   Discuss on Twitter
                 </Link>
