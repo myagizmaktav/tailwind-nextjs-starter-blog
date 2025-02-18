@@ -5,7 +5,7 @@ import siteMetadata from '@/data/siteMetadata'
 export const dynamic = 'force-static'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = siteMetadata.siteUrl
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
 
   const blogRoutes = allBlogs
     .filter((post) => !post.draft)

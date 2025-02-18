@@ -20,7 +20,7 @@ export async function generateMetadata(props: {
     alternates: {
       canonical: './',
       types: {
-        'application/rss+xml': `${siteMetadata.siteUrl}/tags/${tag}/feed.xml`,
+        'application/rss+xml': `${process.env.NEXT_PUBLIC_SITE_URL}/tags/${tag}/feed.xml`,
       },
     },
   })
