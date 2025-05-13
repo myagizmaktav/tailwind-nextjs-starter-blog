@@ -1,21 +1,158 @@
-version: "3"
+version: '3.7'
 services:
-  blog:
+  enkalabalikdiscord_com:
     image: foxsnow/timarhaneblog:latest
-    container_name: frontend
-    build: 
-      context: ./
-    ports:
-      - "3001:3001"
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 2500M
+    command: >
+      sh -c " sleep  && npm run build && npm run serve"
+    # ports:
+    #   - 3000:3000
+    restart: always
     environment:
       - DOCKER_BUILDKIT=0
       - COMPOSE_DOCKER_CLI_BUILD=0
-    working_dir: /app
+      - NEXT_PUBLIC_SITE_URL=https://enkalabalikdiscord.com
     networks:
-      - nextjs
+      - network
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.enkalabalikdiscord_com.rule=(Host(`enkalabalikdiscord.com`) || Host(`www.enkalabalikdiscord.com`))
+      - traefik.http.routers.enkalabalikdiscord_com.entrypoints=websecure
+      - traefik.http.routers.enkalabalikdiscord_com.tls=true
+      - traefik.http.routers.enkalabalikdiscord_com.tls.certresolver=myresolver
+      - traefik.http.routers.enkalabalikdiscord_com.middlewares=mywwwredirect
+      - traefik.http.routers.enkalabalikdiscord_com.service=enkalabalikdiscord_com
+      - traefik.http.services.enkalabalikdiscord_com.loadbalancer.server.port=3000
+    volumes:
+      - /root/blog/enkalabalikdiscord_com:/data/blog
+
+  enkalabalikdiscord_com_tr:
+    image: foxsnow/timarhaneblog:latest
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 2500M
+    command: >
+      sh -c " sleep 10 && npm run build && npm run serve"
+    # ports:
+    #   - 3000:3000
+    restart: always
+    environment:
+      - DOCKER_BUILDKIT=0
+      - COMPOSE_DOCKER_CLI_BUILD=0
+      - NEXT_PUBLIC_SITE_URL=https://enkalabalikdiscord.com
+    networks:
+      - network
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.enkalabalikdiscord_com_tr.rule=(Host(`enkalabalikdiscord.com.tr`) || Host(`www.enkalabalikdiscord.com.tr`))
+      - traefik.http.routers.enkalabalikdiscord_com_tr.entrypoints=websecure
+      - traefik.http.routers.enkalabalikdiscord_com_tr.tls=true
+      - traefik.http.routers.enkalabalikdiscord_com_tr.tls.certresolver=myresolver
+      - traefik.http.routers.enkalabalikdiscord_com_tr.middlewares=mywwwredirect
+      - traefik.http.routers.enkalabalikdiscord_com_tr.service=enkalabalikdiscord_com_tr
+      - traefik.http.services.enkalabalikdiscord_com_tr.loadbalancer.server.port=3000
+    volumes:
+      - /root/blog/enkalabalikdiscord_com_tr:/data/blog
+
+  kalabalikdiscord_com:
+    image: foxsnow/timarhaneblog:latest
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 2500M
+    command: >
+      sh -c " sleep 40 && npm run build && npm run serve"
+    # ports:
+    #   - 3000:3000
+    restart: always
+    environment:
+      - DOCKER_BUILDKIT=0
+      - COMPOSE_DOCKER_CLI_BUILD=0
+      - NEXT_PUBLIC_SITE_URL=https://enkalabalikdiscord.com
+    networks:
+      - network
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.kalabalikdiscord_com.rule=(Host(`kalabalikdiscord.com`) || Host(`www.kalabalikdiscord.com`))
+      - traefik.http.routers.kalabalikdiscord_com.entrypoints=websecure
+      - traefik.http.routers.kalabalikdiscord_com.tls=true
+      - traefik.http.routers.kalabalikdiscord_com.tls.certresolver=myresolver
+      - traefik.http.routers.kalabalikdiscord_com.middlewares=mywwwredirect
+      - traefik.http.routers.kalabalikdiscord_com.service=kalabalikdiscord_com
+      - traefik.http.services.kalabalikdiscord_com.loadbalancer.server.port=3000
+    volumes:
+      - /root/blog/kalabalikdiscord_com:/data/blog
+
+  kalabalikdiscord_com_tr:
+    image: foxsnow/timarhaneblog:latest
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 2500M
+    command: >
+      sh -c " sleep 50 && npm run build && npm run serve"
+    # ports:
+    #   - 3000:3000
+    restart: always
+    environment:
+      - DOCKER_BUILDKIT=0
+      - COMPOSE_DOCKER_CLI_BUILD=0
+      - NEXT_PUBLIC_SITE_URL=https://enkalabalikdiscord.com
+    networks:
+      - network
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.kalabalikdiscord_com_tr.rule=(Host(`kalabalikdiscord.com.tr`) || Host(`www.kalabalikdiscord.com.tr`))
+      - traefik.http.routers.kalabalikdiscord_com_tr.entrypoints=websecure
+      - traefik.http.routers.kalabalikdiscord_com_tr.tls=true
+      - traefik.http.routers.kalabalikdiscord_com_tr.tls.certresolver=myresolver
+      - traefik.http.routers.kalabalikdiscord_com_tr.middlewares=mywwwredirect
+      - traefik.http.routers.kalabalikdiscord_com_tr.service=kalabalikdiscord_com_tr
+      - traefik.http.services.kalabalikdiscord_com_tr.loadbalancer.server.port=3000
+    volumes:
+      - /root/blog/kalabalikdiscord_com_tr:/data/blog
+
+  turkiyediscord_xyz:
+    image: foxsnow/timarhaneblog:latest
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 2500M
+    command: >
+      sh -c " sleep 60 && npm run build && npm run serve"
+    # ports:
+    #   - 3000:3000
+    restart: always
+    environment:
+      - DOCKER_BUILDKIT=0
+      - COMPOSE_DOCKER_CLI_BUILD=0
+      - NEXT_PUBLIC_SITE_URL=https://enkalabalikdiscord.com
+    networks:
+      - network
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.turkiyediscord_xyz.rule=(Host(`turkiyediscord.xyz`) || Host(`www.turkiyediscord.xyz`))
+      - traefik.http.routers.turkiyediscord_xyz.entrypoints=websecure
+      - traefik.http.routers.turkiyediscord_xyz.tls=true
+      - traefik.http.routers.turkiyediscord_xyz.tls.certresolver=myresolver
+      - traefik.http.routers.turkiyediscord_xyz.middlewares=mywwwredirect
+      - traefik.http.routers.turkiyediscord_xyz.service=turkiyediscord_xyz
+      - traefik.http.services.turkiyediscord_xyz.loadbalancer.server.port=3000
+    volumes:
+      - /root/blog/turkiyediscord_xyz:/data/blog
 
 networks:
-  nextjs:
-    driver: bridge
+  network:
+    name: network
+    driver: overlay
+    attachable: true
     external: true
-      
